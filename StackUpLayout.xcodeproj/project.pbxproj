@@ -13,6 +13,8 @@
 		9050705929424DA50027FD6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9050705729424DA50027FD6F /* Main.storyboard */; };
 		9050705B29424DA90027FD6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9050705A29424DA90027FD6F /* Assets.xcassets */; };
 		9050705E29424DA90027FD6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9050705C29424DA90027FD6F /* LaunchScreen.storyboard */; };
+		90848DC5294B92CB00A2A4AC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90848DC4294B92CB00A2A4AC /* Stack.swift */; };
+		90848DC8294B9C8500A2A4AC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90848DC7294B9C8500A2A4AC /* CustomButton.swift */; };
 		90D7C5AE294632F70080E4D8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7C5AD294632F70080E4D8 /* UIView+Extension.swift */; };
 		90D7C5B029463F840080E4D8 /* StackUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7C5AF29463F840080E4D8 /* StackUpController.swift */; };
 		90D7C5B3294640A40080E4D8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7C5B2294640A40080E4D8 /* UIViewController+Extension.swift */; };
@@ -31,6 +33,8 @@
 		9050705A29424DA90027FD6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9050705D29424DA90027FD6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9050705F29424DA90027FD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90848DC4294B92CB00A2A4AC /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		90848DC7294B9C8500A2A4AC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		90D7C5AD294632F70080E4D8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		90D7C5AF29463F840080E4D8 /* StackUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackUpController.swift; sourceTree = "<group>"; };
 		90D7C5B2294640A40080E4D8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -70,10 +74,11 @@
 		9050705029424DA50027FD6F /* StackUpLayout */ = {
 			isa = PBXGroup;
 			children = (
+				9050705329424DA50027FD6F /* SceneDelegate.swift */,
+				9050705129424DA50027FD6F /* AppDelegate.swift */,
+				90848DC6294B9C7900A2A4AC /* Views */,
 				90848DC3294B615300A2A4AC /* DummyControllers */,
 				90D7C5B7294641150080E4D8 /* Models */,
-				9050705129424DA50027FD6F /* AppDelegate.swift */,
-				9050705329424DA50027FD6F /* SceneDelegate.swift */,
 				90D7C5B6294640E10080E4D8 /* Controllers */,
 				90D7C5B1294640830080E4D8 /* Extensions */,
 				9050705729424DA50027FD6F /* Main.storyboard */,
@@ -91,6 +96,14 @@
 				90D7C5BA294646DA0080E4D8 /* PostController.swift */,
 			);
 			path = DummyControllers;
+			sourceTree = "<group>";
+		};
+		90848DC6294B9C7900A2A4AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90848DC7294B9C8500A2A4AC /* CustomButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		90D7C5B1294640830080E4D8 /* Extensions */ = {
@@ -116,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				90D7C5B82946411F0080E4D8 /* StackUpModel.swift */,
+				90848DC4294B92CB00A2A4AC /* Stack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,8 +210,10 @@
 				90D7C5B029463F840080E4D8 /* StackUpController.swift in Sources */,
 				9050705629424DA50027FD6F /* ViewController.swift in Sources */,
 				9050705229424DA50027FD6F /* AppDelegate.swift in Sources */,
+				90848DC5294B92CB00A2A4AC /* Stack.swift in Sources */,
 				90D7C5BB294646DA0080E4D8 /* PostController.swift in Sources */,
 				90D7C5B5294640CB0080E4D8 /* Array+Extension.swift in Sources */,
+				90848DC8294B9C8500A2A4AC /* CustomButton.swift in Sources */,
 				90D7C5AE294632F70080E4D8 /* UIView+Extension.swift in Sources */,
 				9050705429424DA50027FD6F /* SceneDelegate.swift in Sources */,
 				90D7C5BD29464B3A0080E4D8 /* LoginController.swift in Sources */,

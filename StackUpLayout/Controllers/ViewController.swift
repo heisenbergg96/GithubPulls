@@ -9,43 +9,26 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let launchButton = UIButton()
+    private let launchButton = CustomButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        launchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        launchButton.setTitle("Launch", for: .normal)
-        
+        view.backgroundColor = .white
         view.addSubview(launchButton)
         
-        launchButton.setSize(width: 100, height: 48)
+        launchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        launchButton.backgroundColor = .black
-        launchButton.setTitleColor(.red, for: .normal)
-        
-        launchButton.center(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
-        
+        launchButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                            left: view.leadingAnchor,
+                            right: view.trailingAnchor,
+                            padding: UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20),
+                            height: 50)
     }
 
     @objc private func buttonTapped() {
-        
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = .red
-        
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = .blue
-        
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = .green
-        
-        
-        
-        
         let vc = StackUpController(dataSource: StackUpModel.dataSource(), spacing: 100)
-        
         present(vc, animated: true)
     }
 }

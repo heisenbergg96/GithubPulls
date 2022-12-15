@@ -23,7 +23,7 @@ extension Array {
         return (startIndex..<endIndex).contains(idx)
     }
     
-    func getElementsAfter(index: Int) -> Array? {
+    func getElements(from index: Int) -> Array? {
         
         guard (startIndex..<endIndex).contains(index) else {
             return nil
