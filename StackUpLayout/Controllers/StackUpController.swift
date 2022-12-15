@@ -74,6 +74,11 @@ class StackUpController: UIViewController {
     
     @objc private func controllerTapped(_ gesture: UITapGestureRecognizer) {
         
+        // if we click on the current controller no animation should happen. 
+        if gesture.view === stack.peek()?.controller.view {
+            return
+        }
+        
         // #1 get index of the controller that is tapped
         let tappedIndex = dataSource.firstIndex { $0.controller.view === gesture.view }
         
@@ -89,6 +94,7 @@ class StackUpController: UIViewController {
         // #3 Dimiss all those controllers
         animateView(controllers: controllerToBeDismissed, y: UIScreen.main.bounds.height) { [weak self] in
         // #4 remove all those controllers from the stack after animating
+            print("Controller popped")
             self?.stack.items.removeAll(where: { controllerToBeDismissed.contains($0.controller) })
             self?.cta.setTitle(self?.stack.peek()?.ctaTitle, for: .normal)
         }
@@ -105,18 +111,17 @@ class StackUpController: UIViewController {
         let nextIndex = index + 1
 
         //#3 push that controller and add it to the stack
-        if dataSource.isIndexExists(idx: nextIndex) {
-            
-            if let data = dataSource[guarded: nextIndex] {
-                
-                let y = CGFloat(spacing * nextIndex)
-                
-                animateView(controllers: [data.controller], y: y) {
-                    print("Controller pushed")
-                    self.stack.push(data)
-                    self.cta.setTitle(self.stack.peek()?.ctaTitle, for: .normal)
-                }
-            }
+        guard dataSource.isIndexExists(idx: nextIndex),
+              let data = dataSource[guarded: nextIndex] else {
+            return
+        }
+        
+        let y = CGFloat(spacing * nextIndex)
+        
+        animateView(controllers: [data.controller], y: y) {
+            print("Controller pushed")
+            self.stack.push(data)
+            self.cta.setTitle(self.stack.peek()?.ctaTitle, for: .normal)
         }
     }
 }
