@@ -79,18 +79,32 @@ class StackUpController: UIViewController {
     }
     
     @objc private func controllerTapped(_ gesture: UITapGestureRecognizer) {
-       
+        
+        // #1 get index of the controller that is tapped
         let tappedIndex = dataSource.firstIndex { $0.controller.view === gesture.view }
         
-        guard let index = tappedIndex,
-              dataSource[guarded: index + 1] != nil else {
-              return
+        guard let index = tappedIndex else { return }
+        
+        // #2 get array of controllers next to that controller
+        guard let toBeDismissedControllers = dataSource.getElementsAfter(index: index + 1) else {
+            return
         }
         
-        //controller on top of the tapped controller needs to be collapsed.
-        let toBeDismissedControllers = dataSource[(index + 1)...dataSource.count-1]
+        print(toBeDismissedControllers)
         
-        print("to be dismiised \(toBeDismissedControllers.count)")
+        let controllerList = toBeDismissedControllers.map { $0.controller }
+        
+        // #3 Dimiss all those controllers
+        animateView(controllers: controllerList, y: UIScreen.main.bounds.height) {
+        // #4 remove all those controllers from the stack after
+            self.stack.items.removeAll(where: { controllerList.contains($0.controller) })
+            print(self.stack.items)
+            print("controllers dismissed")
+        }
+    }
+    
+    private func removeFromStack(_ controllers: [UIViewController]) {
+        
         
     }
     
@@ -116,7 +130,6 @@ class StackUpController: UIViewController {
                     self.stack.push(data)
                 }
             }
-            
         }
     }
 }
@@ -151,6 +164,7 @@ public struct Stack<U> {
         items.append(item)
     }
     
+    @discardableResult
     mutating func pop() -> U? {
         guard !items.isEmpty else { return nil }
         return items.removeLast()

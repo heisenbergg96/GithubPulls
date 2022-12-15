@@ -22,4 +22,13 @@ extension Array {
     func isIndexExists(idx: Int) -> Bool {
         return (startIndex..<endIndex).contains(idx)
     }
+    
+    func getElementsAfter(index: Int) -> Array? {
+        
+        guard (startIndex..<endIndex).contains(index) else {
+            return nil
+        }
+        let elements = self[index..<count]
+        return Array(elements)
+    }
 }
